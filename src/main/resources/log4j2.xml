@@ -15,8 +15,14 @@
       <DefaultRolloverStrategy max="5" />
     </RollingFile>
   </Appenders>
+
   <Loggers>
-    <Root level="info">
+    <Logger name="net.troja" level="info" additivity="false">
+      <AppenderRef ref="Console" />
+      <AppenderRef ref="File" />
+    </Logger>
+
+    <Root level="warn">
       <AppenderRef ref="Console" />
       <AppenderRef ref="File" />
     </Root>

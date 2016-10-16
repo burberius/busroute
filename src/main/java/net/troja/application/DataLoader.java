@@ -24,6 +24,7 @@ public class DataLoader {
     @Autowired
     private Station2RouteRepository repository;
     private int lines;
+    private long entryCount;
 
     public DataLoader() {
         super();
@@ -56,6 +57,7 @@ public class DataLoader {
         } catch (final IOException e) {
             LOGGER.error("Could not load data file", e);
         }
+        entryCount = repository.count();
     }
 
     private void parseLine(final String line) {
@@ -73,5 +75,9 @@ public class DataLoader {
         } catch (final NumberFormatException e) {
             LOGGER.warn(LOG_INVALID_CONTENT);
         }
+    }
+
+    public long getEntryCount() {
+        return entryCount;
     }
 }
