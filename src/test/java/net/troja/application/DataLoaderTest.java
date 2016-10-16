@@ -25,6 +25,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+/**
+ * Verifying logs found here:
+ * https://codingcraftsman.wordpress.com/2015/04/28/log4j2-mocking-with-mockito-and-junit/
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DataLoaderTest {
