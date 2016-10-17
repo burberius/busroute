@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,12 +15,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class BusRouteApplication implements CommandLineRunner {
     private static final Logger LOGGER = LogManager.getLogger(BusRouteApplication.class);
+    public static final String STORAGE_TYPE_DB = "db";
+    public static final String STORAGE_TYPE_MEM = "mem";
 
     @Autowired
     private DataLoader loader;
+    @Value("${storage}")
+    private String storageType;
 
     @Override
     public void run(final String... args) throws Exception {
+        LOGGER.info("Using storage: " + storageType);
         if (args.length != 1) {
             LOGGER.error("You have to give the bus route data file as parameter! We continue without data!");
         } else {
